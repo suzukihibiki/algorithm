@@ -1,10 +1,8 @@
 
 
+from collections import deque
+queue = deque(["Ram",30])
 
-
-
-a = ["ag","ags","sdff"]
-
-B = a[:]
-print(a)
-print(B)
+print(queue)
+v = queue.popleft()
+print(v)

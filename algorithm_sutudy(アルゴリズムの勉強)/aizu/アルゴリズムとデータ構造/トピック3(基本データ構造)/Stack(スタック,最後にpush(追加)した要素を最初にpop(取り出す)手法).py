@@ -56,7 +56,25 @@ L = input().split() # type(S) => <class 'list'>
 
 # 解説
 # ==========================================================================================================================
+class MyStack:
+    def __init__(self):
+        self.stack = []
+    def push(self, item):
+        self.stack.append(item)
+    def pop(self):
+        if len(self.stack) == 0:
+            return None
+        return self.stack.pop()
 
+mystack = MyStack()
+mystack.push(0)
+print(mystack.pop())
+print(mystack.pop())
+
+# このクラスはスタックを説明したクラスです。
+# self.stackに対して、データをpushし、popしています。
+    
+    
 # 計算速度 ※実際に動きます。
 # ==========================================================================================================================
 A = input().split()
@@ -75,8 +93,6 @@ for item in A:
         W.append(int(item))
 
 print(W[0])
-
-
 
 
 
