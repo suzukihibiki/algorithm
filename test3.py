@@ -6,10 +6,11 @@
 
 from collections import deque
 
-a = deque(["Ram", "Tarun", "Asif", "John"])
+a = deque([["Ram", 1],["aaaaa",2]])
 
 
 while a:
     
     b , c= a.popleft()
-    print(b,c)
+    print(b)
+    print(c)

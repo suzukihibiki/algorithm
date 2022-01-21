@@ -38,7 +38,6 @@
 
 
 
-from collections import deque
 
 
 
@@ -73,48 +72,40 @@ from collections import deque
 
 
 
+n, q = map(int, input().split())
+task_name_weight = [0] * n
+for i in range(n):
+    task_name_weight[i] = input().split()
+
+# task_name = ["p1", "p2","p3"]
+# task_weight = [150, 80, 200]
 
 
 
+from collections import deque
 
+q = 100
+task_name_weight = (["p1",100],["p2",200],["p3",300])
 
-
-def main(q, t, w):
-    t_d = deque(t)
-    w_d = deque(w)
+def main(q, t_w):
+    t_w = deque(t_w)
+    add_t_w = t_w.append
     l = []
     time = 0
-    while t_d: # dの要素が無くなるまで実行
-        k = t_d.popleft()
-        v = w_d.popleft()
-        print(v)
-        print(q)
+    while t_w: # dの要素が無くなるまで実行
+        k,v = t_w.popleft()
+        v = int(v)
         if v > q:
             v -= q # タスクのウェイト(時間)を引く(1回のクオンタム100ms分s)
             time += q # 都度、クオンタムを追加。
-            t_d.append(k)
-            w_d.append(v)
+            add_t_w([k,v])
         else:
             time += v
             l += [f'{k} {time}']
     return l
 
-# n, q = map(int, input().split())
-# task_name = [0] * n
-# task_weight = [0] * n
-
-# for i in range(n):
-#     task_name[i], task_weight[i] = input().split()
-    
-# task_weight = list(map(int ,task_weight))
-
-q = 100
-task_name = ["p1", "p2","p3"]
-task_weight = [150, 80, 200]
-
 ancer_data = main(
     q = q,
-    t = task_name,
-    w = task_weight
+    t_w = task_name_weight
 )
 print(*ancer_data,sep="\n")
